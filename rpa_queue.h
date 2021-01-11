@@ -18,11 +18,11 @@
 #define RPA_QUEUE_H
 
 #include <stdbool.h>
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
-#define RPA_WAIT_NONE     0
-#define RPA_WAIT_FOREVER  -1
+#define RPA_WAIT_NONE 0
+#define RPA_WAIT_FOREVER -1
 
 /**
  * @file rpa_queue.h
@@ -49,7 +49,7 @@ typedef struct rpa_queue_t rpa_queue_t;
  * @param queue_capacity maximum size of the queue
  * @param a pool to allocate queue from
  */
-bool rpa_queue_create(rpa_queue_t **queue, uint32_t queue_capacity);
+bool rpa_queue_create(rpa_queue_t** queue, uint32_t queue_capacity);
 
 /**
  * push/add an object to the queue, blocking if the queue is already full
@@ -60,7 +60,7 @@ bool rpa_queue_create(rpa_queue_t **queue, uint32_t queue_capacity);
  * @returns RPA_EOF the queue has been terminated
  * @returns RPA_SUCCESS on a successful push
  */
-bool rpa_queue_push(rpa_queue_t *queue, void *data);
+bool rpa_queue_push(rpa_queue_t* queue, void* data);
 
 /**
  * push/add an object to the queue, blocking if the queue is already full
@@ -72,7 +72,7 @@ bool rpa_queue_push(rpa_queue_t *queue, void *data);
  * @returns RPA_EOF     the queue has been terminated
  * @returns RPA_SUCCESS on a successful push
  */
-bool rpa_queue_timedpush(rpa_queue_t *queue, void *data, int wait_ms);
+bool rpa_queue_timedpush(rpa_queue_t* queue, void* data, int wait_ms);
 
 /**
  * pop/get an object from the queue, blocking if the queue is already empty
@@ -83,7 +83,7 @@ bool rpa_queue_timedpush(rpa_queue_t *queue, void *data, int wait_ms);
  * @returns RPA_EOF if the queue has been terminated
  * @returns RPA_SUCCESS on a successful pop
  */
-bool rpa_queue_pop(rpa_queue_t *queue, void **data);
+bool rpa_queue_pop(rpa_queue_t* queue, void** data);
 
 /**
  * pop/get an object from the queue, blocking if the queue is already empty
@@ -95,7 +95,7 @@ bool rpa_queue_pop(rpa_queue_t *queue, void **data);
  * @returns RPA_EOF     if the queue has been terminated
  * @returns RPA_SUCCESS on a successful pop
  */
-bool rpa_queue_timedpop(rpa_queue_t *queue, void **data, int wait_ms);
+bool rpa_queue_timedpop(rpa_queue_t* queue, void** data, int wait_ms);
 
 /**
  * push/add an object to the queue, returning immediately if the queue is full
@@ -107,7 +107,7 @@ bool rpa_queue_timedpop(rpa_queue_t *queue, void **data, int wait_ms);
  * @returns RPA_EOF the queue has been terminated
  * @returns RPA_SUCCESS on a successful push
  */
-bool rpa_queue_trypush(rpa_queue_t *queue, void *data);
+bool rpa_queue_trypush(rpa_queue_t* queue, void* data);
 
 /**
  * pop/get an object to the queue, returning immediately if the queue is empty
@@ -119,7 +119,7 @@ bool rpa_queue_trypush(rpa_queue_t *queue, void *data);
  * @returns RPA_EOF the queue has been terminated
  * @returns RPA_SUCCESS on a successful pop
  */
-bool rpa_queue_trypop(rpa_queue_t *queue, void **data);
+bool rpa_queue_trypop(rpa_queue_t* queue, void** data);
 
 /**
  * returns the size of the queue.
@@ -129,14 +129,14 @@ bool rpa_queue_trypop(rpa_queue_t *queue, void **data);
  * @param queue the queue
  * @returns the size of the queue
  */
-uint32_t rpa_queue_size(rpa_queue_t *queue);
+uint32_t rpa_queue_size(rpa_queue_t* queue);
 
 /**
  * interrupt all the threads blocking on this queue.
  *
  * @param queue the queue
  */
-bool rpa_queue_interrupt_all(rpa_queue_t *queue);
+bool rpa_queue_interrupt_all(rpa_queue_t* queue);
 
 /**
  * terminate the queue, sending an interrupt to all the
@@ -144,13 +144,13 @@ bool rpa_queue_interrupt_all(rpa_queue_t *queue);
  *
  * @param queue the queue
  */
-bool rpa_queue_term(rpa_queue_t *queue);
+bool rpa_queue_term(rpa_queue_t* queue);
 
 /**
  * destroy queue
  * @param  queue
  * @return     always true
  */
-void rpa_queue_destroy(rpa_queue_t * queue);
+void rpa_queue_destroy(rpa_queue_t* queue);
 
 #endif /* RPAQUEUE_H */
